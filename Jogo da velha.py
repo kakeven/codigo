@@ -1,7 +1,8 @@
 import os
 import random
-from colorama import Fore
+from colorama import Fore,init
 
+init()
 Jogar_novamente = "s"
 Jogadas = 0
 quem_joga = random.randint(1,2)
@@ -23,7 +24,7 @@ def tela():
     print('2:  ' + velha[2][1] + ' | ' + velha[2][2] + ' | ' + velha[2][3])
     print('   ---+---+---')
     print('3:  ' + velha[3][1] + ' | ' + velha[3][2] + ' | ' + velha[3][3])
-    print('Jogadas: ' + Fore.CYAN + str(Jogadas) + Fore.RESET)
+    print('Jogadas: ' + Fore.YELLOW + str(Jogadas) + Fore.RESET)
 
 def jogador():
     global Jogadas
@@ -38,7 +39,7 @@ def jogador():
             linha = int(input('Digite a linha: '))
             coluna = int(input("Digite a coluna: "))
         
-        velha[linha][coluna] = 'X'
+        velha[linha][coluna] =  ( Fore.CYAN + "X" + Fore.RESET)
         quem_joga = 2
         Jogadas += 1
 
@@ -53,32 +54,32 @@ def CPU():
             linha = random.randint(1, 3)
             coluna = random.randint(1, 3)
         
-        velha[linha][coluna] = "O"
+        velha[linha][coluna] =  ( Fore.RED + "O" + Fore.RESET)
         quem_joga = 1
         Jogadas += 1
 
 def ganhou():
     # Player 1 (X)
     for i in range(1, 4):
-        if velha[i][1] == velha[i][2] == velha[i][3] == "X":  # Horizontal
+        if velha[i][1] == velha[i][2] == velha[i][3] == ( Fore.CYAN + "X" + Fore.RESET):  # Horizontal
             print("Player 1 Ganhou!")
             return True
-        if velha[1][i] == velha[2][i] == velha[3][i] == "X":  # Vertical
+        if velha[1][i] == velha[2][i] == velha[3][i] == ( Fore.CYAN + "X" + Fore.RESET):  # Vertical
             print("Player 1 Ganhou!")
             return True
-    if velha[1][1] == velha[2][2] == velha[3][3] == "X" or velha[3][1] == velha[2][2] == velha[1][3] == "X":  # Diagonais
+    if velha[1][1] == velha[2][2] == velha[3][3] == ( Fore.CYAN + "X" + Fore.RESET) or velha[3][1] == velha[2][2] == velha[1][3] == ( Fore.CYAN + "X" + Fore.RESET):  # Diagonais
         print("Player 1 Ganhou!")
         return True
     
     # Player 2 (O)
     for i in range(1, 4):
-        if velha[i][1] == velha[i][2] == velha[i][3] == "O":  # Horizontal
+        if velha[i][1] == velha[i][2] == velha[i][3] == ( Fore.CYAN + "O" + Fore.RESET):  # Horizontal
             print("Player 2 Ganhou!")
             return True
-        if velha[1][i] == velha[2][i] == velha[3][i] == "O":  # Vertical
+        if velha[1][i] == velha[2][i] == velha[3][i] == ( Fore.CYAN + "O" + Fore.RESET):  # Vertical
             print("Player 2 Ganhou!")
             return True
-    if velha[1][1] == velha[2][2] == velha[3][3] == "O" or velha[3][1] == velha[2][2] == velha[1][3] == "O":  # Diagonais
+    if velha[1][1] == velha[2][2] == velha[3][3] == ( Fore.CYAN + "O" + Fore.RESET) or velha[3][1] == velha[2][2] == velha[1][3] == ( Fore.CYAN + "O" + Fore.RESET):  # Diagonais
         print("Player 2 Ganhou!")
         return True
 
